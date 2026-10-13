@@ -1,0 +1,69 @@
+{
+  "company": "Chinook Parcel Co.",
+  "vehicle": { "en": "Van 1", "fr": "Fourgon 1" },
+  "departAt": "08:30",
+  "depot": {
+    "id": "depot",
+    "name": "Chinook Parcel Co. warehouse",
+    "address": "6020 30 St SE, Calgary, AB",
+    "coordinates": [-113.9868, 50.9988]
+  },
+  "stops": [
+    {
+      "id": "bowness-hardware",
+      "name": "Bowness Hardware",
+      "address": "6404 Bowness Rd NW, Calgary, AB",
+      "coordinates": [-114.1853, 51.0889],
+      "serviceMinutes": 8,
+      "note": { "en": "Two boxes, back door", "fr": "Deux boîtes, porte arrière" }
+    },
+    {
+      "id": "inglewood-pantry",
+      "name": "Inglewood Pantry",
+      "address": "1218 9 Ave SE, Calgary, AB",
+      "coordinates": [-114.0375, 51.0406],
+      "serviceMinutes": 5,
+      "note": { "en": "Chilled goods", "fr": "Produits réfrigérés" }
+    },
+    {
+      "id": "crowfoot-pet-supply",
+      "name": "Crowfoot Pet Supply",
+      "address": "70 Crowfoot Terrace NW, Calgary, AB",
+      "coordinates": [-114.2079, 51.1226],
+      "serviceMinutes": 10,
+      "note": { "en": "Pallet, needs signature", "fr": "Palette, signature requise" }
+    },
+    {
+      "id": "mission-florist",
+      "name": "Mission Florist",
+      "address": "2303 4 St SW, Calgary, AB",
+      "coordinates": [-114.0717, 51.0336],
+      "serviceMinutes": 4,
+      "note": { "en": "Fragile", "fr": "Fragile" }
+    },
+    {
+      "id": "signal-hill-tea",
+      "name": "Signal Hill Tea House",
+      "address": "5986 Signal Hill Centre SW, Calgary, AB",
+      "coordinates": [-114.1690, 51.0170],
+      "serviceMinutes": 6,
+      "note": { "en": "Front counter", "fr": "Comptoir avant" }
+    },
+    {
+      "id": "bridgeland-roasters",
+      "name": "Bridgeland Coffee Roasters",
+      "address": "917 1 Ave NE, Calgary, AB",
+      "coordinates": [-114.0388, 51.0531],
+      "serviceMinutes": 7,
+      "note": { "en": "Green coffee sacks", "fr": "Sacs de café vert" }
+    },
+    {
+      "id": "marda-loop-cycles",
+      "name": "Marda Loop Cycles",
+      "address": "2000 33 Ave SW, Calgary, AB",
+      "coordinates": [-114.1061, 51.0232],
+      "serviceMinutes": 6,
+      "note": { "en": "Bike frames, long box", "fr": "Cadres de vélo, boîte longue" }
+    }
+  ]
+}
