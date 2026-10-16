@@ -1,11 +1,11 @@
-# Routes: a delivery route planner built with Unmap
+# Delivery Route Planner, built with Unmap
 
 A lightweight dispatcher for a small delivery business: one van leaves a warehouse, visits up to
 eight customers and comes back. Plan the round on a live Unmap map, add stops by searching for
 them, reorder them, let Unmap optimize the order and compare it with yours, read an estimated
-arrival schedule, and play a simulated courier through the day. Part of the
-[Unmap demo suite](https://unmap.dev/demos); live at
-[apps.unmap.dev/routes](https://apps.unmap.dev/routes).
+arrival schedule, and play a simulated courier through the day. One of the
+[Unmap apps](https://unmap.dev/apps); live at
+[apps.unmap.dev/route-planner](https://apps.unmap.dev/route-planner/).
 
 The round belongs to **Chinook Parcel Co., a fictional courier in Calgary**. The company, the
 customers, their addresses, notes and service times are sample data, and the courier is a
@@ -88,7 +88,7 @@ app/page.tsx                 the one page; renders the app in the browser
 components/routes/           the app: plan card, comparison, simulation controls, stop list, map,
                              add-stop search, directions, drive-time matrix
 components/ui/  lib/map-*    Unmap registry items and shadcn primitives, copied in unmodified
-lib/kit/                     the Unmap demo kit (header, Built with Unmap panel, errors, en/fr), copied in
+lib/kit/                     the Unmap app kit (header, Built with Unmap panel, errors, en/fr), copied in
 hooks/                       React hooks: route legs, optimization, matrix, directions, simulation clock
 lib/plan.ts                  the plan model: validation, reorder/add/remove, applying an optimized order
 lib/legs.ts  lib/schedule.ts the route as legs, totals, warnings placed on stops; the arrival schedule
@@ -112,7 +112,7 @@ your own copy they are ordinary source you can edit.
 
 `pnpm deploy` builds the static export and uploads it as an assets-only Cloudflare Worker named in
 `wrangler.jsonc`. Set `NEXT_PUBLIC_UNMAP_KEY` at build time. To serve it under a path, set
-`BASE_PATH` (for example `/routes`) for the build.
+`BASE_PATH` (for example `/route-planner`) for the build.
 
 ## Licence
 

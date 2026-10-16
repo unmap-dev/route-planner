@@ -9,7 +9,7 @@ Everything on screen, where it comes from, and how far to trust it.
 | Optimized stop order and its tour distance and time | Unmap Routing API (`/optimized-route`) | ODbL, © OpenStreetMap contributors | Live |
 | Drive times between every pair of stops | Unmap Routing API (`/matrix`) | ODbL, © OpenStreetMap contributors | Live |
 | Search results when adding a stop | Unmap Geocoding API (`/geocode/autocomplete`) | the sources the Geocoding API credits | Live |
-| Company, depot, customer names, addresses, delivery notes, service times, departure time | **Sample data**, invented for this demo: `data/route.sample.json` | Free to reuse | No |
+| Company, depot, customer names, addresses, delivery notes, service times, departure time | **Sample data**, invented for this app: `data/route.sample.json` | Free to reuse | No |
 | The courier's position and each stop's job state | **Simulated** in the browser from the live route geometry and drive times | — | No |
 
 ## The sample round

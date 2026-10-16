@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import type { GeocodeResult } from "@unmap/sdk";
 import { API_KEY, GATEWAY } from "@/lib/kit/config";
-import { DemoHeader } from "@/lib/kit/demo-header";
+import { AppHeader } from "@/lib/kit/app-header";
 import { MissingKey } from "@/lib/kit/missing-key";
 import { useLang } from "@/lib/kit/use-lang";
 import { legDurations, placeWarnings, routeTotals } from "@/lib/legs";
@@ -98,7 +98,7 @@ export function RoutesApp() {
     // which sit beside the map rather than on it, reach the map the <Map> below registers.
     <MapProvider apiKey={API_KEY} gateway={GATEWAY} container={null} id="routes-panel">
       <div className="flex h-dvh flex-col">
-        <DemoHeader manifest={MANIFEST} lang={lang} onLang={setLang} />
+        <AppHeader manifest={MANIFEST} lang={lang} onLang={setLang} />
         <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
           <aside className="order-last flex min-h-0 flex-1 flex-col overflow-y-auto border-t lg:order-first lg:w-[420px] lg:flex-none lg:border-t-0 lg:border-r">
             <div className="flex flex-col gap-3 p-3">

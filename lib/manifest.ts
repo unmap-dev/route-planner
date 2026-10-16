@@ -1,12 +1,12 @@
-import type { DemoManifest } from "@/lib/kit/provenance";
+import type { AppManifest } from "@/lib/kit/provenance";
 
 /**
- * What the "Built with Unmap" panel and the header say about Routes. Lists only what the app really
+ * What the "Built with Unmap" panel and the header say about Delivery Route Planner. Lists only what the app really
  * calls; a service is added here in the same change that starts calling it.
  */
-export const MANIFEST: DemoManifest = {
-  slug: "routes",
-  name: { en: "Routes · delivery planner", fr: "Routes · planificateur de livraisons" },
+export const MANIFEST: AppManifest = {
+  slug: "route-planner",
+  name: { en: "Delivery Route Planner", fr: "Planificateur de tournées de livraison" },
   tagline: {
     en: "Plan, optimize and play back a day of deliveries, with live Unmap routing.",
     fr: "Planifiez, optimisez et rejouez une journée de livraisons, avec les itinéraires Unmap en direct.",
@@ -66,7 +66,7 @@ export const MANIFEST: DemoManifest = {
         en: "Chinook Parcel Co.: the depot, customer names, addresses, notes, service times and departure time",
         fr: "Chinook Parcel Co. : l'entrepôt, les noms des clients, les adresses, les notes, les temps de service et l'heure de départ",
       },
-      source: "Fictional, written for this demo (data/route.sample.json)",
+      source: "Fictional, written for this app (data/route.sample.json)",
     },
     {
       kind: "simulated",

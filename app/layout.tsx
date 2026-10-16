@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Routes · delivery route planner · Unmap demo",
+  title: "Delivery Route Planner · Unmap app",
   description: "A delivery route planner built with Unmap routing, route optimization and the Unmap component registry. Sample deliveries, simulated courier.",
 };
 

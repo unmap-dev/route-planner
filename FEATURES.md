@@ -1,6 +1,6 @@
 # Features
 
-What Routes does, which Unmap API does it, what the API itself guarantees, and what the demo
+What Delivery Route Planner does, which Unmap API does it, what the API itself guarantees, and what the app
 deliberately does not do.
 
 ## Implemented
@@ -25,7 +25,7 @@ deliberately does not do.
 | No-key state | lists the plan and explains how to get a key; calls nothing | — |
 | Built with Unmap | the services, the SDK calls, the registry items and every non-live thing on screen | — |
 
-## API facts this demo is built on
+## API facts this app is built on
 
 Verified in the source on 2026-10-12 (the sandbox this was built in cannot reach `api.unmap.dev`,
 so none of it was exercised live here; the end-to-end tests mock the gateway with responses shaped
@@ -47,7 +47,7 @@ by the types and code below).
   `withCompliance`, `apps/gateway/src/routing/service.ts`). `CLOSURE_IN_FORCE_NEAR_ROUTE` /
   `CLOSURE_SCHEDULED_NEAR_ROUTE` (`where: "route"`) cover Ontario, Alberta and British Columbia
   only (`RouteWarning`, `packages/routing/src/index.ts:395`). Branch on `code`; the message may be
-  reworded, which is why the demo shows it as sent and parses only the distance, falling back to
+  reworded, which is why the app shows it as sent and parses only the distance, falling back to
   the bare message.
 - Free-flow drive times: there is no live or predicted traffic anywhere in the routing API.
 
@@ -59,13 +59,13 @@ by the types and code below).
   `400 too_many_locations`.
 - **The first and last stop are fixed**; only the stops between are reordered. There is no
   round-trip or open-route option (`optimizedRouteRequestBody`, `apps/gateway/src/routing/valhalla.ts`).
-  The demo sends the depot twice, so seven or eight customer stops fit.
+  The app sends the depot twice, so seven or eight customer stops fit.
 - Returns `OptimizedRouteResult` = `RouteResult` + `order`, the request's indices in visiting
   order, always a permutation (`packages/routing/src/index.ts:691`). The gateway refuses (`502
   upstream_error`) rather than invent an order when the engine's answer is not one
   (`toOptimizedRouteResult`, `apps/gateway/src/routing/valhalla.ts:1196`). It carries no per-leg
   durations and no `warnings` (the relocation check runs on `/route` only), which is one reason the
-  demo routes the applied order leg by leg.
+  app routes the applied order leg by leg.
 - A stop the others cannot reach, or a set wider than the engine's straight-line limit, fails the
   whole request: `422 no_route`, "no optimized route: a stop is unreachable or beyond the engine's
   distance limit". A stop outside Canada is `422 outside_coverage` first. A `null` in the
@@ -76,15 +76,15 @@ by the types and code below).
   set: `"OPTIMIZE_ENABLED": "1"` in `apps/gateway/wrangler.jsonc:227`** (set on 2026-09-17 per
   `docs/services/routing.md`, "Matrix, match and optimize are flag-gated"). The public page
   `apps/web/content/docs/apis/routing.mdx` ("Optimize") still says "Rolling out … answers 404 until
-  the founder enables it", which is stale. The demo handles the `404` either way.
-- A different "Unmap Optimize" API (PR #360) is not used; this demo uses `/optimized-route`
+  the founder enables it", which is stale. The app handles the `404` either way.
+- A different "Unmap Optimize" API (PR #360) is not used; this app uses `/optimized-route`
   through `@unmap/sdk` only.
 
 ### `POST /matrix`
 
 - `unmap.router.matrix(origins, destinations)` (`packages/routing/src/index.ts:836`): at most 10
   origins and 10 destinations (`MAX_MATRIX_ORIGINS`, `MAX_MATRIX_DESTINATIONS`,
-  `apps/gateway/src/routing/service.ts:186-187`). The demo sends the depot and every stop, at most
+  `apps/gateway/src/routing/service.ts:186-187`). The app sends the depot and every stop, at most
   nine.
 - Returns `{ durations, distances }`, seconds and metres, rows are origins
   (`MatrixResult`, `packages/routing/src/index.ts:678`). **A `null` cell is a real answer**: a
@@ -103,7 +103,7 @@ by the types and code below).
   `invalid_body` 400, `too_many_locations` 400, `outside_coverage` 422, `no_route` 422,
   `upstream_error` 502, `service_unavailable` 503 (`docs/services/routing.md`, error table).
 - The SDK retries `429`, `502`, `503` and transport failures on its own (`fetchWithRetry`,
-  `packages/core/src/http.ts:96`); the demo's "Try again" is the user's, never automatic.
+  `packages/core/src/http.ts:96`); the app's "Try again" is the user's, never automatic.
 - Each `/route`, `/matrix` and `/optimized-route` call meters as one routing call. A sample round
   costs 8 `/route` calls on load; a reorder costs only the new legs.
 
@@ -122,7 +122,7 @@ so.
 
 ## Registry candidates
 
-Built here as demo code because the registry has no item for them yet (not edited in this change):
+Built here as app code because the registry has no item for them yet (not edited in this change):
 
 - Multi-stop playback along a route: `lib/simulation.ts` (timeline of drive and service segments,
   position by distance along a `LineString`, job states, reduced-motion stepping). The
@@ -131,5 +131,5 @@ Built here as demo code because the registry has no item for them yet (not edite
   (`components/routes/stop-list.tsx`), and the leg-by-leg routing hook with per-leg caching and
   cancellation (`hooks/use-route-legs.ts`).
 - A matrix table that renders `null` cells honestly (`components/routes/matrix-card.tsx`).
-- In the demo kit: a `no-route` problem kind. `describeError` reads every `422` as "outside
+- In the app kit: a `no-route` problem kind. `describeError` reads every `422` as "outside
   coverage", which is wrong for `no_route`; `components/routes/route-problem.tsx` works around it.

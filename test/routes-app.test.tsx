@@ -24,7 +24,7 @@ describe("Routes without a key", () => {
   it("lists the sample round, labels it, and asks for a key instead of a map", () => {
     const fetchSpy = vi.spyOn(globalThis, "fetch");
     render(<RoutesApp />);
-    expect(screen.getByText("This demo needs an Unmap API key")).toBeTruthy();
+    expect(screen.getByText("This app needs an Unmap API key")).toBeTruthy();
     const list = screen.getByRole("list", { name: "Stops" });
     // The depot, seven stops, the depot again.
     expect(within(list).getAllByRole("listitem").filter((li) => li.parentElement === list).length).toBe(9);
@@ -53,7 +53,7 @@ describe("Routes without a key", () => {
     render(<RoutesApp />);
     fireEvent.click(screen.getByRole("button", { name: "Français" }));
     expect(screen.getByRole("list", { name: "Arrêts" })).toBeTruthy();
-    expect(screen.getByText("Cette démo a besoin d'une clé d'API Unmap")).toBeTruthy();
+    expect(screen.getByText("Cette application a besoin d'une clé d'API Unmap")).toBeTruthy();
     expect(window.location.search).toBe("?lang=fr");
   });
 });

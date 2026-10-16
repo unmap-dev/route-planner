@@ -2,7 +2,7 @@
   "name": "unmap-route-planner",
   "version": "0.0.1",
   "private": true,
-  "description": "Routes: a delivery route planner built with Unmap. An Unmap demo and a starter you can clone.",
+  "description": "Delivery Route Planner: plan and optimize a delivery round, built with Unmap. An Unmap app and a starter you can clone.",
   "scripts": {
     "dev": "node scripts/copy-maplibre-worker.mjs && next dev --port 3202",
     "build": "node scripts/copy-maplibre-worker.mjs && next build",
