@@ -1,5 +1,17 @@
 # @unmap/app-route-planner
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [2504d8c]
+- Updated dependencies [78bb54f]
+- Updated dependencies [6d8deae]
+  - @unmap/sdk@0.23.0
+  - @unmap/maps@0.23.0
+  - @unmap/geocoding@0.23.0
+  - @unmap/routing@0.23.0
+
 ## 0.0.3
 
 ### Patch Changes
