@@ -8,7 +8,11 @@ import { format, type Lang } from "@/lib/kit/i18n";
 import { DEFAULT_SERVICE_SECONDS, MAX_STOPS, type Stop } from "@/lib/plan";
 import { TEXT } from "@/lib/text";
 
-/** Downtown Calgary: search prefers places near it, and still finds anywhere in Canada. */
+/**
+ * Downtown Calgary: search prefers places near it, and still finds anywhere in Canada. The focus
+ * also picks the country: a point in one of the ten US metros (Seattle is [-122.33, 47.61]) makes
+ * every search a US one.
+ */
 const NEAR: [number, number] = [-114.07, 51.05];
 
 /** A search result as a stop, with the default sample service time. */

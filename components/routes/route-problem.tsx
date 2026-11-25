@@ -7,8 +7,9 @@ import type { Lang } from "@/lib/kit/i18n";
 
 /**
  * A routing failure, said plainly. The gateway has two 422s: `outside_coverage` (a point outside
- * Canada) and `no_route` (inside coverage, but the road graph connects no route, e.g. Iqaluit has
- * no road to the mainland). The kit's alert reads every 422 as the first, so `no_route` gets its
+ * Canada and the ten US metros, or a trip across the border) and `no_route` (inside coverage, but
+ * the road graph connects no route, e.g. Iqaluit has no road to the mainland, or the stops are in
+ * two US metros). The kit's alert reads every 422 as the first, so `no_route` gets its
  * own words here with the gateway's message beside them; everything else is the kit's alert.
  */
 export function RouteProblem({ error, title, hint, lang, onRetry }: { error: unknown; title: string; hint: string; lang: Lang; onRetry?: () => void }) {

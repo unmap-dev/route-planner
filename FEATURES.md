@@ -10,7 +10,7 @@ deliberately does not do.
 | Map of the depot, numbered stops and the route | registry `map`, `marker-popup` pins (coloured by job state), `route-line`; one line when every leg answered, each answered leg on its own otherwise, so a failed leg is a gap and never a straight line | Maps API (`/styles`, `/tiles`) |
 | Route and summary distance and drive time | one `unmap.router.route(from, to)` per leg (depot → stop 1 → … → depot), summed; each leg is asked for once and kept, so a reorder asks only for new legs; legs no longer in the plan are cancelled | Routing `GET /route` |
 | Editable stop list | remove, move earlier/later with buttons (no drag; focus follows the moved stop), at most eight stops | — |
-| Add a stop by search | registry `geocoder` (debounced, cancels stale searches, Combobox keyboard support), results preferred near Calgary, any Canadian place accepted | Geocoding `GET /geocode/autocomplete` |
+| Add a stop by search | registry `geocoder` (debounced, cancels stale searches, Combobox keyboard support), results preferred near Calgary (the focus also makes the search Canadian), any Canadian place accepted | Geocoding `GET /geocode/autocomplete` |
 | Optimize stop order | `unmap.router.optimize([depot, ...stops, depot])`; the depot is the fixed first and last stop; asked only on the button, once per sequence | Optimization `POST /optimized-route` |
 | Compare your order with Unmap's | both totals side by side, the optimized sequence in your stop numbers, a saving only when it is larger than the two calculations could differ by; "Optimized by Unmap" only when the order on screen is the one the API returned, "Your order" after any manual edit | `/route` legs vs `/optimized-route` total |
 | Optimization switched off | a `404 not_found` from `/optimized-route` keeps the supplied order, explains why, and stops asking | — |
@@ -68,7 +68,8 @@ by the types and code below).
   app routes the applied order leg by leg.
 - A stop the others cannot reach, or a set wider than the engine's straight-line limit, fails the
   whole request: `422 no_route`, "no optimized route: a stop is unreachable or beyond the engine's
-  distance limit". A stop outside Canada is `422 outside_coverage` first. A `null` in the
+  distance limit". A stop outside routing coverage (Canada, or the one US metro the other points are in) is
+  `422 outside_coverage` first, and stops in two US metros are `422 no_route`. A `null` in the
   underlying matrix does not fail the tour (`docs/services/routing.md`, "Optimize").
 - **Feature flag.** The route is always mounted but answers `404` with the gateway's
   `{ "error": "no such endpoint…", "code": "not_found" }` when `OPTIMIZE_ENABLED` is unset

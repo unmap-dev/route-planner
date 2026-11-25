@@ -81,6 +81,18 @@ update the `sample` entry in `lib/manifest.ts` and `DATA_SOURCES.md`, since your
 sample. To track real vehicles, replace the simulated clock in `hooks/use-simulation.ts` with your
 fleet's positions and drop the "Simulated" labels only for what is then live.
 
+## Where it works
+
+The sample round is in Calgary, and the search prefers places near downtown Calgary (`NEAR` in
+`components/routes/add-stop.tsx`), which also keeps it in Canada. Everything the app routes is by
+car, so it also works in ten US metros: Los Angeles, New York, Miami, SF Bay Area, Seattle,
+Washington DC, Austin, Boston, Denver and Chicago. For a US round, put the depot and every stop in
+the same metro and set `NEAR` to a point there (Seattle is `[-122.33, 47.61]`): a focus inside the
+US makes the search a US one, with street addresses in those metros and place names nationwide.
+Routes do not cross the border or run between two metros: the API answers `422 outside_coverage`
+for the first, shown in the app's error alert, and `422 no_route` for the second, shown on the
+stop.
+
 ## How it is built
 
 ```

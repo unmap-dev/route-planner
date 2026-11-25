@@ -5,7 +5,7 @@ Everything on screen, where it comes from, and how far to trust it.
 | What | Source | Licence | Live? |
 | --- | --- | --- | --- |
 | Basemap (streets, labels, water, parks) | Unmap Maps API, built from OpenStreetMap | ODbL, © OpenStreetMap contributors | Live |
-| Route lines, distances, drive times, turn-by-turn directions, route warnings | Unmap Routing API (`/route`), Valhalla over the Canadian OpenStreetMap graph | ODbL, © OpenStreetMap contributors | Live |
+| Route lines, distances, drive times, turn-by-turn directions, route warnings | Unmap Routing API (`/route`), Valhalla over the OpenStreetMap road graph (the sample round is in Calgary) | ODbL, © OpenStreetMap contributors | Live |
 | Optimized stop order and its tour distance and time | Unmap Routing API (`/optimized-route`) | ODbL, © OpenStreetMap contributors | Live |
 | Drive times between every pair of stops | Unmap Routing API (`/matrix`) | ODbL, © OpenStreetMap contributors | Live |
 | Search results when adding a stop | Unmap Geocoding API (`/geocode/autocomplete`) | the sources the Geocoding API credits | Live |
@@ -40,9 +40,13 @@ traffic, and does not report anything anywhere. It is labelled "Simulated" where
 
 - **Drive times are free-flow estimates.** The routing graph carries no live or predicted traffic,
   so neither the schedule nor the simulation should be read as a promise of an arrival time.
-- **Canada only.** Routing and search cover Canada; a stop outside it is refused by the API
-  (`422 outside_coverage`) and shown as such. Inside Canada, a place with no road connection (such
-  as Iqaluit from Calgary) is `422 no_route`, shown on the stop.
+- **Coverage.** The sample round and the search focus are in Calgary, so search answers in
+  Canada. Routing covers Canada, and car trips inside one of ten US metros (Los Angeles, New York,
+  Miami, SF Bay Area, Seattle, Washington DC, Austin, Boston, Denver, Chicago): a round there works
+  when the depot and every stop are in the same metro. A stop outside coverage, or a round that
+  crosses the border, is refused by the API (`422 outside_coverage`) and shown as such. Stops in
+  two US metros, or a Canadian place with no road connection (such as Iqaluit from Calgary), are
+  `422 no_route`, shown on the stop.
 - **Endpoint relocation.** When a stop is off the road network, the engine moves it to the nearest
   road it can use; the API reports `ENDPOINT_RELOCATED` past 250 m and the app shows it on the stop.
 - **Closure warnings** cover Ontario, Alberta and British Columbia, where authoritative feeds exist;

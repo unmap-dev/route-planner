@@ -51,8 +51,8 @@ export const MANIFEST: AppManifest = {
     {
       name: "Geocoding",
       role: {
-        en: "Search-as-you-type to add a stop by address or place name, anywhere in Canada.",
-        fr: "Recherche à la saisie pour ajouter un arrêt par adresse ou nom de lieu, partout au Canada.",
+        en: "Search-as-you-type to add a stop by address or place name, anywhere in Canada, preferring places near the depot.",
+        fr: "Recherche à la saisie pour ajouter un arrêt par adresse ou nom de lieu, partout au Canada, en privilégiant les lieux près de l'entrepôt.",
       },
       calls: ['<Geocoder apiKey={key} proximity={[-114.07, 51.05]} />  // geocoder.autocomplete(q, { focus })'],
       docs: "https://unmap.dev/docs/apis/geocoding",
